@@ -11,6 +11,6 @@ import util.Try
 
 trait Configuration {
   val config = ConfigFactory.load()
-  lazy val servicePort = Properties.envOrElse("PORT", "80")
+  lazy val servicePort = Integer.parseInt(Properties.envOrElse("PORT", "80"))
   lazy val serviceHost = Try(config.getString("service.host")).getOrElse("localhost")
 }
